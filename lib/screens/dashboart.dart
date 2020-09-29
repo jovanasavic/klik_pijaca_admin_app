@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:klik_pijaca_admin_app/widgets/product.dart';
 import 'package:klik_pijaca_admin_app/screens/orders.dart';
+import 'package:klik_pijaca_admin_app/screens/products.dart';
 
 import 'add_product.dart';
 
@@ -60,6 +61,20 @@ class DashboardScreen extends StatelessWidget {
               onTap: () {},
               leading: Icon(Icons.person),
               title: CustomText(text: "My profile"),
+            ),
+            ListTile(
+              onTap: () {
+                changeScreen(context, OrdersScreen());
+              },
+              leading: Icon(Icons.bookmark_border),
+              title: CustomText(text: "Orders"),
+            ),
+            ListTile(
+              onTap: () {
+                changeScreen(context, ProductsScreen());
+              },
+              leading: Icon(Icons.fastfood),
+              title: CustomText(text: "Products"),
             ),
           ],
         ),

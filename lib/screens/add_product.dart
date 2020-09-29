@@ -5,7 +5,7 @@ import 'package:klik_pijaca_admin_app/providers/category.dart';
 import 'package:klik_pijaca_admin_app/providers/product.dart';
 import 'package:klik_pijaca_admin_app/providers/app.dart';
 import 'package:klik_pijaca_admin_app/widgets/loading.dart';
-
+import 'package:klik_pijaca_admin_app/providers/admin.dart';
 import 'package:klik_pijaca_admin_app/widgets/custom_file_button.dart';
 import 'package:klik_pijaca_admin_app/widgets/custom_text.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +24,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     final app = Provider.of<AppProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
     final categoryProvider = Provider.of<CategoryProvider>(context);
+    final adminProvider = Provider.of<AdminProvider>(context);
 
     return Scaffold(
       key: _key,
@@ -297,6 +298,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             content: Text("Upload completed"),
                             duration: const Duration(seconds: 10),
                           ));
+                          adminProvider.loadAllProducts();
+                          adminProvider.reloadAdminModel();
                           app.changeLoadingState();
                           return;
                           // }

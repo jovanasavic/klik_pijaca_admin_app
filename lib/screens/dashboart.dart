@@ -10,6 +10,7 @@ import 'package:klik_pijaca_admin_app/widgets/small_floating_button.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:klik_pijaca_admin_app/widgets/product.dart';
+import 'package:klik_pijaca_admin_app/screens/orders.dart';
 
 import 'add_product.dart';
 
@@ -40,13 +41,13 @@ class DashboardScreen extends StatelessWidget {
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: green),
               accountName: CustomText(
-                text: adminProvider.adminModel.name,
+                text: adminProvider.adminModel?.name,
                 color: white,
                 weight: FontWeight.bold,
                 size: 18,
               ),
               accountEmail: CustomText(
-                text: adminProvider.adminModel.email,
+                text: adminProvider.adminModel?.email,
                 color: white,
               ),
             ),
@@ -113,7 +114,7 @@ class DashboardScreen extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.bottomLeft,
                       child: CustomText(
-                        text: adminProvider.adminModel.name,
+                        text: adminProvider.adminModel?.name ?? "",
                         color: white,
                         size: 24,
                         weight: FontWeight.normal,
@@ -126,7 +127,7 @@ class DashboardScreen extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.bottomLeft,
                       child: CustomText(
-                        text: adminProvider.adminModel.email,
+                        text: adminProvider.adminModel?.email ?? "",
                         color: white,
                         size: 16,
                         weight: FontWeight.w300,
@@ -166,6 +167,9 @@ class DashboardScreen extends StatelessWidget {
                           blurRadius: 5),
                     ]),
                 child: ListTile(
+                    onTap: () {
+                      changeScreen(context, OrdersScreen());
+                    },
                     leading: Padding(
                       padding: const EdgeInsets.all(4),
                       child: Image.asset("images/cucumber.jpg"),
@@ -198,6 +202,9 @@ class DashboardScreen extends StatelessWidget {
                           blurRadius: 5),
                     ]),
                 child: ListTile(
+                    onTap: () {
+                      changeScreen(context, ProductsScreen());
+                    },
                     leading: Padding(
                       padding: const EdgeInsets.all(4),
                       child: Image.asset("images/cucumber.jpg"),

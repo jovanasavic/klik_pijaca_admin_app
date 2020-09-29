@@ -106,6 +106,17 @@ class ProductWidget extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Icon(
+                              Icons.star,
+                              color: green,
+                              size: 20,
+                            ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: CustomText(
@@ -113,29 +124,6 @@ class ProductWidget extends StatelessWidget {
                               color: grey,
                               size: 14.0,
                             ),
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: green,
-                            size: 16,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: green,
-                            size: 16,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: green,
-                            size: 16,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: grey,
-                            size: 16,
                           ),
                         ],
                       ),

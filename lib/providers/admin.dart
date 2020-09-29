@@ -37,6 +37,7 @@ class AdminProvider with ChangeNotifier {
   //public variable
 
   List<OrderModel> orders = [];
+  List<CartItemModel> cartItems = [];
 
   final formkey = GlobalKey<FormState>();
 
@@ -101,6 +102,9 @@ class AdminProvider with ChangeNotifier {
 
   Future<void> reloadAdminModel() async {
     _adminModel = await _userServicse.getAdminById(user.uid);
+    await loadAllProducts();
+    await getOrders();
+    await getTotalSales();
     notifyListeners();
   }
 
@@ -130,9 +134,10 @@ class AdminProvider with ChangeNotifier {
 
   getTotalSales() async {
     for (OrderModel order in orders) {
-      // for (CartItemModel item in order.cart) {
-      _totalSales = _totalSales + order.total;
-      // }
+      for (CartItemModel item in order.cart) {
+        _totalSales = _totalSales + order.total;
+        cartItems.add(item);
+      }
     }
     print("TOTAL SALES!!!!!!" + _totalSales.toString());
     notifyListeners();

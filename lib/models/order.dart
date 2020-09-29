@@ -35,13 +35,13 @@ class OrderModel {
     _status = snapshot.data()[STATUS];
     _total = snapshot.data()[TOTAL];
     _createdAt = snapshot.data()[CREATED_AT];
-    cart = convertedCartItems(snapshot.data()[CART]);
+    cart = convertedCartItems(snapshot.data()[CART], _createdAt);
   }
 
-  List<CartItemModel> convertedCartItems(List cart) {
+  List<CartItemModel> convertedCartItems(List cart, int createdAt) {
     List<CartItemModel> convertedCart = [];
     for (Map cartItem in cart) {
-      convertedCart.add(CartItemModel.fromMap(cartItem));
+      convertedCart.add(CartItemModel.fromMap(cartItem, createdAt));
     }
     return convertedCart;
   }

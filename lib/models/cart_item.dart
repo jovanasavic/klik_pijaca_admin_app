@@ -16,6 +16,7 @@ class CartItemModel {
   int _price;
   int _quantity;
   int _totalSales;
+  int _date = 0;
 
   //getters
   String get id => _id;
@@ -25,8 +26,9 @@ class CartItemModel {
   int get price => _price;
   int get quantity => _quantity;
   int get totalSales => _totalSales;
+  int get date => _date;
 
-  CartItemModel.fromMap(Map data) {
+  CartItemModel.fromMap(Map data, int createdAt) {
     _id = data[ID];
     _name = data[NAME];
     _productId = data[PRODUCT_ID];
@@ -34,6 +36,7 @@ class CartItemModel {
     _price = data[PRICE];
     _quantity = data[QUANTITY];
     _totalSales = data[TOTAL_SALES];
+    _date = createdAt;
   }
 
   Map toMap() => {
